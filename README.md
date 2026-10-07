@@ -1,30 +1,100 @@
-# Dzień 1 — inwentaryzacja laboratorium
+# Junior Network Lab
 
-## Stan środowiska
+Projekt laboratoryjny przygotowujący do pracy na stanowisku
+Junior Network Engineer.
 
-- Serwer: Ubuntu 24.04.5 LTS.
-- Dostęp do serwera: SSH z komputera Windows.
-- Procesor serwera: Intel Core i5-3470T, 4 logiczne procesory.
-- Pamięć RAM: 7,5 GiB; podczas pomiaru dostępne było około 5,8 GiB.
-- Dysk systemowy: około 377 GiB wolnego miejsca.
-- Wirtualizacja: Intel VT-x wykryte, urządzenie `/dev/kvm` dostępne.
-- Komputer kliencki: Windows 11 Home.
-- Sprzęt sieciowy: zwykły router Wi-Fi.
+## Cel projektu
 
-## Wykonane testy
+Budowa i dokumentacja sieci małego biura LAB-BIURO.
 
-| Test | Wynik |
+Projekt obejmuje m.in.:
+
+- adresację IPv4 i IPv6
+- VLAN i trunk 802.1Q
+- routing między VLAN-ami
+- STP / RSTP
+- EtherChannel / LACP
+- OSPF
+- DNS i DHCP
+- Debian/Linux
+- MikroTik RouterOS
+- NAT i firewall
+- WireGuard VPN
+- Windows Server
+- Active Directory
+- Group Policy
+- udziały SMB i NTFS
+- backup i odtwarzanie
+- diagnostykę sieci
+
+## Środowisko laboratoryjne
+
+### Linux
+- Ubuntu Server 24.04 LTS
+- adres LAN: `192.168.0.51/24`
+- SSH
+- WireGuard
+
+### Cisco
+Laboratoria wykonane w Cisco Packet Tracer:
+
+- VLAN 10 – PRACOWNICY
+- VLAN 20 – GOSCIE
+- trunk 802.1Q
+- Router-on-a-Stick
+- STP / RSTP
+- EtherChannel LACP
+- OSPF
+- IPv6
+
+### MikroTik
+MikroTik CHR / RouterOS:
+
+- WinBox
+- bridge
+- VLAN
+- DHCP
+- routing
+- NAT
+- firewall
+- WireGuard
+
+### Windows Server
+
+Windows Server 2025:
+
+- host: `SRV-DC01`
+- domena: `corp.example.com`
+- NetBIOS: `CORP`
+- Active Directory Domain Services
+- DNS domenowy
+- kontroler domeny
+
+## Status projektu
+
+| Etap | Status |
 |---|---|
-| Sprawdzenie systemu | Ubuntu 24.04.5 LTS |
-| Łączność z bramą | Poprawna |
-| Łączność z adresem zewnętrznym | Poprawna |
-| Rozwiązywanie nazw DNS | Poprawne dla `example.com` |
-| Test HTTPS | `HTTP/2 200` dla `https://example.com` |
+| Podstawy sieci i adresacja | ✅ wykonane |
+| VLAN / trunk / routing | ✅ wykonane |
+| STP / RSTP / EtherChannel | ✅ wykonane |
+| OSPF i IPv6 | ✅ wykonane |
+| Debian / diagnostyka | ✅ wykonane |
+| NAT / firewall | ✅ wykonane |
+| MikroTik RouterOS | ✅ wykonane |
+| WireGuard Debian ↔ Windows | ✅ wykonane |
+| WireGuard MikroTik | ✅ wykonane |
+| Windows Server 2025 | ✅ wykonane |
+| Active Directory `corp.example.com` | ✅ wykonane |
+| DHCP Windows Server | 🔄 w trakcie |
+| Group Policy (GPO) | ⏳ do wykonania |
+| SMB + NTFS | ⏳ do wykonania |
+| Backup / Restore | ⏳ do wykonania |
+| Monitoring | ⏳ do wykonania |
+| Projekt końcowy | ⏳ do wykonania |
 
-## Wnioski
+## Aktualny etap – Dzień 25
 
-Serwer nadaje się do podstawowych ćwiczeń sieciowych. Z uwagi na 7,5 GiB RAM cięższe maszyny wirtualne będą uruchamiane pojedynczo. Docelowa sieć biura nie została jeszcze zbudowana.
+Potwierdzono działanie Active Directory:
 
-## Następny krok
-
-Dzień 2: podstawowe urządzenia sieciowe, LAN/WAN, Ethernet oraz modele OSI i TCP/IP.
+```powershell
+Get-ADDomain
